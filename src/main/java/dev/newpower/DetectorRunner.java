@@ -1,4 +1,4 @@
-package org.example;
+package dev.newpower;
 
 /**
  * Runner class to execute the unused symbols detector

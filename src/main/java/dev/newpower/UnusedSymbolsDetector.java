@@ -1,4 +1,4 @@
-package org.example;
+package dev.newpower;
 
 import java.io.File;
 import java.io.IOException;

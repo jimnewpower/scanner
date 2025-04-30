@@ -1,4 +1,4 @@
-package org.example;
+package dev.newpower;
 
 /**
  * Hello world!
