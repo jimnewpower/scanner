@@ -57,8 +57,10 @@ public class UnusedSymbolsDetector {
             unusedSymbols.removeAll(usedSymbols);
 
             logger.info("\n{} Scanner Results:", scanner.getScannerId());
-            logger.info("Found {} unused symbols:", unusedSymbols.size());
-            if (!unusedSymbols.isEmpty()) {
+            if (unusedSymbols.isEmpty()) {
+                logger.info("No unused symbols found.");
+            } else {
+                logger.info("Found {} unused symbols:", unusedSymbols.size());
                 for (String symbol : unusedSymbols) {
                     AbstractScanner.SymbolLocation location = scanner.getSymbolLocation(symbol);
                     if (location != null) {

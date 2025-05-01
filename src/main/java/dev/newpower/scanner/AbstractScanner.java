@@ -109,6 +109,7 @@ public abstract class AbstractScanner {
         Files.walk(Path.of(baseDir))
             .filter(Files::isRegularFile)
             .filter(path -> path.toString().endsWith(extension))
+            .filter(path -> !path.toString().contains("node_modules")) // Ignore node_modules directory
             .forEach(files::add);
         return files;
     }
