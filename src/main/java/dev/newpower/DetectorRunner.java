@@ -1,22 +1,28 @@
 package dev.newpower;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 /**
- * Runner class to execute the unused symbols detector
+ * Runner class for the UnusedSymbolsDetector
  */
 public class DetectorRunner {
-    public void run(String projectPath) {
+    private static final Logger logger = LoggerFactory.getLogger(DetectorRunner.class);
+
+    public void run(String projectDir) {
+        // Expand relative path to absolute path
+        Path absolutePath = Paths.get(projectDir).toAbsolutePath().normalize();
+        logger.info("Scanning project directory: {}", absolutePath);
+
         try {
-            System.out.println("Starting unused symbols detection for project: " + projectPath);
-            System.out.println("==========================================");
-
-            UnusedSymbolsDetector detector = new UnusedSymbolsDetector(projectPath);
+            UnusedSymbolsDetector detector = new UnusedSymbolsDetector(absolutePath.toString());
             detector.analyze();
-
-            System.out.println("==========================================");
-            System.out.println("Detection completed. Review the output above for unused symbols.");
         } catch (Exception e) {
-            System.err.println("Error running detector: " + e.getMessage());
-            e.printStackTrace();
+            logger.error("Error scanning project: {}", e.getMessage(), e);
+            System.exit(1);
         }
     }
 }

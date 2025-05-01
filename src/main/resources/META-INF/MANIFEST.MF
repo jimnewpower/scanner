@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: dev.newpower.App
+Implementation-Title: Unused Symbols Scanner
+Implementation-Version: 1.0-SNAPSHOT
+Created-By: Maven
+Build-Jdk: 17 
